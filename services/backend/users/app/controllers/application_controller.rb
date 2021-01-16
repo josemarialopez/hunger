@@ -25,7 +25,7 @@ class ApplicationController < ActionController::API
 
     if decoded_token
       user_id = decoded_token[0]['user_id']
-      @current_user = User.find_by(id: user_id)
+      @current_user = User.where(id: user_id).first
     end
   end
 
