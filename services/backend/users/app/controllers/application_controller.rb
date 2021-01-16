@@ -1,13 +1,6 @@
 class ApplicationController < ActionController::API
   before_action :authorize!
 
-  def_param_group :pagination do
-    param :page, Integer, desc: 'The number of page we want to access'
-    param :size, Integer, desc: 'The size of the collection returned'
-    param :order, String, desc: 'The field that we want to use for sorting'
-    param :direction, ["asc", "desc"], desc: 'The direction of the sorted elements'
-  end
-
   def encode_token(payload)
     JWT.encode(payload, Rails.application.credentials.jwt_secret, 'HS256')
   end
