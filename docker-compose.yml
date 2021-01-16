@@ -1,6 +1,20 @@
 version: '3.9'
 
 services:
+  hunger_landing:
+    image: hunger_landing
+    build:
+      context: ./services/frontend/landing
+      dockerfile: ./Dockerfile
+    ports:
+      - 4201:4200
+    environment:
+      - RAILS_ENV=development
+    volumes:
+      - ./services/frontend/landing/src:/app/src
+    networks:
+      - hunger_gateway_network
+
   hunger_users_service:
     image: hunger_users_service
     build:
