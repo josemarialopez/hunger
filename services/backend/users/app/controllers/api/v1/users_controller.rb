@@ -22,7 +22,7 @@ module Api::V1
 
     # POST /users/login
     def login
-      user = User.find_by(email: login_params[:email])
+      user = User.where(email: login_params[:email]).first
 
       if user && user.authenticate(login_params[:password])
         token = encode_token({user_id: user.id.to_s})
