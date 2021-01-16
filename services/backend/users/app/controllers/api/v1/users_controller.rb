@@ -13,15 +13,19 @@ module Api::V1
       end
     end
 
-
+    # DELETE /users/profile
+    def destroy_profile
+      current_user.destroy
+      logout
+      render :ok
+    end
 
     # POST /users/login
     def login
-      byebug
       user = User.find_by(email: login_params[:email])
 
       if user && user.authenticate(login_params[:password])
-        token = encode_token(user_id: user.id)
+        token = encode_token({user_id: user.id.to_s})
         render json: {user: serialize_user(user), token: token}, status: :ok
       else
         head :unauthorized
@@ -42,13 +46,6 @@ module Api::V1
       end
     end
 
-    # DELETE /users/profile
-    def destroy_profile
-      current_user.destroy
-      logout
-      render :ok
-    end
-
     private
 
     # Only allow a trusted parameter "white list" through.
@@ -62,6 +59,10 @@ module Api::V1
 
     def login_params
       params.require(:user).permit(:email, :password)
+    end
+
+    def serialize_user(user)
+      UserSerializer.new(user).attributes
     end
   end
 end
