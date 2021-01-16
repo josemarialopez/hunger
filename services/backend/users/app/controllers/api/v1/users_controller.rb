@@ -7,7 +7,7 @@ module Api::V1
       user = User.new(create_user_params)
 
       if user.save
-        render json: user, status: :created, location: user
+        head :created
       else
         render json: user.errors, status: :unprocessable_entity
       end
@@ -30,13 +30,13 @@ module Api::V1
 
     # GET /users/profile
     def show_profile
-      render json: current_user
+      render json: current_user, status: :ok
     end
 
     # PATCH/PUT /users/profile
     def update_profile
       if current_user.update(update_user_params)
-        render json: current_user
+        render :ok
       else
         render json: current_user.errors, status: :unprocessable_entity
       end
@@ -46,6 +46,7 @@ module Api::V1
     def destroy_profile
       current_user.destroy
       logout
+      render :ok
     end
 
     private
