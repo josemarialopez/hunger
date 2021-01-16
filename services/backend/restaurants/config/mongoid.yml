@@ -1,0 +1,25 @@
+development:
+  clients:
+    default:
+      database: hunger_restaurants_development
+      hosts:
+        - hunger_restaurants_service_db:27017
+      options:
+        server_selection_timeout: 1
+        user: <%= ENV['MONGODB_USER'] %>
+        password: <%= ENV['MONGODB_PASSWORD'] %>
+        auth_source: admin
+
+test:
+  clients:
+    default:
+      database: hunger_retaurants_test
+      hosts:
+        - hunger_retaurants_service_db:27017
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
+        user: <%= ENV['MONGODB_USER'] %>
+        password: <%= ENV['MONGODB_PASSWORD'] %>
+        auth_source: admin
