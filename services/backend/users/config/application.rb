@@ -33,7 +33,5 @@ module Users
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-
-    config.hosts = ["hunger_users_service", "localhost"]
   end
 end
