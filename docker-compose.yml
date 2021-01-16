@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  users_service:
+    container_name: hunger_users_service
+    image: hunger_users_service
+    build:
+      context: ./services/backend/users
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+    depends_on: 
+      - users_service_db
+    environment: 
+      - RAILS_ENV=development
+    volumes:
+      - ./services/backend/users:/service
+
+  users_service_db:
+    container_name: hunger_users_service_db
+    image: mongo
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - 27017:27017
+    volumes:
+      - users_service_data:/var/lib/mongodb/data
+
+
+volumes:
+  users_service_data:
