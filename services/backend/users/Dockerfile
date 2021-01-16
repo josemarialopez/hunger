@@ -1,6 +1,6 @@
 FROM ruby:2.6.3
 WORKDIR /service
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile ./
 RUN bundle install
 COPY . .
 
