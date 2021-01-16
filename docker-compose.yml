@@ -12,6 +12,8 @@ services:
       - hunger_users_service_db
     environment: 
       - RAILS_ENV=development
+      - MONGODB_USER=root
+      - MONGODB_PASSWORD=password
     volumes:
       - ./services/backend/users:/service
     networks:

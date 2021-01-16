@@ -6,9 +6,9 @@ development:
         - hunger_users_service_db:27017
       options:
         server_selection_timeout: 1
-        user: ENV['MONGODB_USER']
-        password: ENV['MONGODB_PASSWORD']
-        auth_source: ENV['MONGODB_AUTH_SOURCE']
+        user: <%= ENV['MONGODB_USER'] %>
+        password: <%= ENV['MONGODB_PASSWORD'] %>
+        auth_source: admin
 
 test:
   clients:
@@ -20,6 +20,6 @@ test:
         read:
           mode: :primary
         max_pool_size: 1
-        user: ENV['MONGODB_USER']
-        password: ENV['MONGODB_PASSWORD']
-        auth_source: ENV['MONGODB_AUTH_SOURCE']
+        user: 'root'
+        password: 'password'
+        auth_source: admin
