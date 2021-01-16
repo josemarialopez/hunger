@@ -1,14 +1,30 @@
 module Api::V1
   class UsersController < ApplicationController
+    before_action :authorize!, except: [:create, :login]
 
     # POST /users
     def create
-      @user = User.new(create_user_params)
+      user = User.new(create_user_params)
 
-      if @user.save
-        render json: @user, status: :created, location: @user
+      if user.save
+        render json: user, status: :created, location: user
       else
-        render json: @user.errors, status: :unprocessable_entity
+        render json: user.errors, status: :unprocessable_entity
+      end
+    end
+
+
+
+    # POST /users/login
+    def login
+      byebug
+      user = User.find_by(email: login_params[:email])
+
+      if user && user.authenticate(login_params[:password])
+        token = encode_token(user_id: user.id)
+        render json: {user: serialize_user(user), token: token}, status: :ok
+      else
+        head :unauthorized
       end
     end
 
@@ -36,11 +52,15 @@ module Api::V1
 
     # Only allow a trusted parameter "white list" through.
     def create_user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password_digest)
+      params.require(:user).permit(:first_name, :last_name, :email, :password)
     end
 
     def update_user_params
-      params.require(:user).permit(:first_name, :last_name, :password_digest)
+      params.require(:user).permit(:first_name, :last_name, :password)
+    end
+
+    def login_params
+      params.require(:user).permit(:email, :password)
     end
   end
 end
