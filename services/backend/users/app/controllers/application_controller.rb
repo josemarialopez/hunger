@@ -21,14 +21,20 @@ class ApplicationController < ActionController::API
   end
 
   def current_user
+    return @current_user unless @current_user.nil?
+
     if decoded_token
       user_id = decoded_token[0]['user_id']
-      @user = User.find_by(id: user_id)
+      @current_user = User.find_by(id: user_id)
     end
   end
 
   def logged?
     !!current_user
+  end
+
+  def logout
+    @current_user = nil
   end
 
   def authorize!
