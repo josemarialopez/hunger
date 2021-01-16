@@ -14,38 +14,7 @@ services:
       - ./services/frontend/landing/src:/app/src
     networks:
       - hunger_gateway_network
-
-  hunger_users_service:
-    image: hunger_users_service
-    build:
-      context: ./services/backend/users
-      dockerfile: ./Dockerfile
-    ports:
-      - 3000:3000
-    depends_on: 
-      - hunger_users_service_db
-    environment: 
-      - RAILS_ENV=development
-      - MONGODB_USER=root
-      - MONGODB_PASSWORD=password
-    volumes:
-      - ./services/backend/users:/service
-    networks:
-      - hunger_gateway_network
-      - hunger_users_service_network
-
-  hunger_users_service_db:
-    image: mongo
-    environment: 
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password
-    ports:
-      - 27017:27017
-    volumes:
-      - users_service_data:/var/lib/mongodb/data
-    networks:
-      - hunger_users_service_network
-
+  
   hunger_app:
     image: hunger_app
     build:
@@ -75,11 +44,72 @@ services:
     depends_on: 
       - hunger_users_service
 
+  hunger_users_service:
+    image: hunger_users_service
+    build:
+      context: ./services/backend/users
+      dockerfile: ./Dockerfile
+    ports:
+      - 3000:3000
+    depends_on: 
+      - hunger_users_service_db
+    environment: 
+      - RAILS_ENV=development
+      - MONGODB_USER=root
+      - MONGODB_PASSWORD=password
+    volumes:
+      - ./services/backend/users:/service
+    networks:
+      - hunger_gateway_network
+      - hunger_users_service_network
+
+  hunger_users_service_db:
+    image: mongo
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - users_service_data:/var/lib/mongodb/data
+    networks:
+      - hunger_users_service_network
+
+  hunger_restaurants_service:
+    image: hunger_restaurants_service
+    build:
+      context: ./services/backend/restaurants
+      dockerfile: ./Dockerfile
+    depends_on: 
+      - hunger_restaurants_service_db
+    environment: 
+      - RAILS_ENV=development
+      - MONGODB_USER=root
+      - MONGODB_PASSWORD=password
+    volumes:
+      - ./services/backend/restaurants:/service
+    networks:
+      - hunger_gateway_network
+      - hunger_restaurants_service_network
+
+  hunger_restaurants_service_db:
+    image: mongo
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - restaurants_service_data:/var/lib/mongodb/data
+    networks:
+      - hunger_restaurants_service_network
+
+  
+
 volumes:
   users_service_data:
+  restaurants_service_data:
 
 networks:
   hunger_gateway_network:
     driver: bridge
   hunger_users_service_network:
+    driver: bridge
+  hunger_restaurants_service_network:
     driver: bridge
