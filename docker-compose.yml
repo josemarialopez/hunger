@@ -1,6 +1,36 @@
 version: '3.9'
 
 services:
+  hunger_app:
+    image: hunger_app
+    build:
+      context: ./services/frontend/app
+      dockerfile: ./Dockerfile
+    ports:
+      - 4200:4200
+    depends_on:
+      - hunger_users_service
+    environment:
+      - RAILS_ENV=development
+    volumes:
+      - ./services/frontend/app/src:/app/src
+    networks:
+      - app_network
+
+  hunger_gateway_service:
+    image: nginx:alpine
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 80:80
+    networks:
+      - app_network
+    volumes:
+      - ./services/gateway/gateway.conf:/etc/nginx/nginx.conf
+    depends_on: 
+      - hunger_app
+      - hunger_users_service
+
   hunger_users_service:
     image: hunger_users_service
     build:
@@ -14,6 +44,8 @@ services:
       - RAILS_ENV=development
     volumes:
       - ./services/backend/users:/service
+    networks:
+      - app_network
 
   hunger_users_service_db:
     image: mongo
@@ -24,7 +56,14 @@ services:
       - 27017:27017
     volumes:
       - users_service_data:/var/lib/mongodb/data
+    networks:
+      - app_network
 
 
 volumes:
   users_service_data:
+
+
+networks:
+  app_network:
+    driver: bridge
