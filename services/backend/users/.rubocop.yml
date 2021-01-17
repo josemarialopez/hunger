@@ -1,2 +1,5 @@
 Metrics/BlockLength:
   Max: 200
+
+AllCops:
+  SuggestExtensions: false
