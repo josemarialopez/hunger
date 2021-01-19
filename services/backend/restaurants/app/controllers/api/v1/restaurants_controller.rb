@@ -10,8 +10,8 @@ module Api
         render json: Restaurant.search(nil)
       end
 
-      def catogories
-        render json: Cetegory.all.sample(5), status: :ok
+      def categories
+        render json: Category.all.sample(5), status: :ok
       end
     end
   end

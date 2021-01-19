@@ -1,4 +1,4 @@
 # Serializer for restaurants
 class CategorySerializer < ActiveModel::Serializer
-  attributes :identifier, :name, :permitted_countries, :blocked_countries
+  attributes :identifier, :name
 end
