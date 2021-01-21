@@ -45,8 +45,6 @@ services:
     build:
       context: ./services/backend/users
       dockerfile: ./Dockerfile
-    ports:
-      - 3000:3000
     depends_on: 
       - hunger_users_service_db
     environment: 
