@@ -6,7 +6,7 @@
   <mat-sidenav-content>
     <div class="restaurant-cards" *ngIf="restaurants.length > 0">
       <div class="cards-area">
-        <restaurant-card [@reject] [restaurant]="restaurant" *ngFor="let restaurant of restaurants.reverse().slice(0, 2)"></restaurant-card>
+        <restaurant-card [@reject] [restaurant]="restaurant" *ngFor="let restaurant of restaurants.reverse()"></restaurant-card>
       </div>
     
       <div class="controls-area">
