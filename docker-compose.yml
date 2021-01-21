@@ -6,8 +6,6 @@ services:
     build:
       context: ./services/frontend/landing
       dockerfile: ./Dockerfile
-    ports:
-      - 4201:4200
     environment:
       - RAILS_ENV=development
     volumes:
@@ -20,8 +18,6 @@ services:
     build:
       context: ./services/frontend/app
       dockerfile: ./Dockerfile
-    ports:
-      - 4200:4200
     depends_on:
       - hunger_users_service
     environment:
@@ -89,6 +85,8 @@ services:
     networks:
       - hunger_gateway_network
       - hunger_restaurants_service_network
+    stdin_open: true
+    tty: true
 
   hunger_restaurants_service_db:
     image: mongo
@@ -99,8 +97,6 @@ services:
       - restaurants_service_data:/var/lib/mongodb/data
     networks:
       - hunger_restaurants_service_network
-
-  
 
 volumes:
   users_service_data:
