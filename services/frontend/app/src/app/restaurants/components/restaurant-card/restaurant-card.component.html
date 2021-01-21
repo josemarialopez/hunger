@@ -1,0 +1,15 @@
+<mat-card class="restaurant-card mat-elevation-z6" *ngIf="restaurant">
+  <img mat-card-image src="{{restaurant.imageUrl}}" alt="Photo of a Shiba Inu">
+  <mat-card-header>
+    <mat-card-title>{{restaurant.name}}</mat-card-title>
+    <mat-card-subtitle><mat-icon>place</mat-icon>{{(restaurant.distance / 1000) | number:'1.2-2'}} kilometers away</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <div class="restaurant-categories">
+      <mat-chip-list aria-label="Categories">
+        <mat-chip *ngFor="let category of restaurant.categories">{{category}}</mat-chip>
+      </mat-chip-list>
+    </div>
+  </mat-card-content>
+</mat-card>

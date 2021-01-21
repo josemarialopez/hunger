@@ -1,0 +1,23 @@
+:host {
+  width: 100vw;
+  height: 100vh;
+
+
+  button.menu-button {
+    display: none;
+  }
+
+  a.logo {
+    padding-top: 15px;
+  }
+
+  .example-card {
+    max-width: 400px;
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+}
+

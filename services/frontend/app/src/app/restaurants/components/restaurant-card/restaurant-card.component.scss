@@ -1,0 +1,36 @@
+.restaurant-card {
+
+  .mat-card-header {
+    .mat-card-title {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .mat-card-subtitle {
+      padding-top: 10px;
+      font-size: 1.5em;
+      font-weight: normal;
+
+      .mat-icon {
+        font-size: .9em;
+      }
+    }
+  }
+
+  .mat-card-content {
+    .restaurant-categories {
+      margin-top: 1em;
+
+      .mat-chip {
+        background-color: #FB5068;
+        color: white;
+      }
+      
+    }
+  }
+
+  .mat-card-image {
+    max-height: 500px;
+    
+  }
+}

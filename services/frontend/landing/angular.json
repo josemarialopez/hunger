@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "hunger"
+  "defaultProject": "hunger",
+  "cli": {
+    "analytics": false
+  }
 }

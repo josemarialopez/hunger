@@ -1,0 +1,54 @@
+<div class="sidenav">
+  <div class="sidenav-header">
+    <h1>Discovery parameters</h1>
+  </div>
+  <div class="sidenav-content">
+    
+    <mat-divider></mat-divider>
+
+    <div class="sidenav-input first-sidenav-input">
+      <mat-form-field class="term-form-field" appearance="outline">
+        <mat-label>Term</mat-label>
+        <input matInput type="search" [(ngModel)]="term">
+      </mat-form-field>
+    </div>
+  
+    <div class="sidenav-input">
+      <mat-form-field class="location-form-field" appearance="outline">
+        <mat-label>Location</mat-label>
+        <input matInput type="text" [(ngModel)]="location">
+      </mat-form-field>
+    </div>
+  
+    <div class="sidenav-input">
+      <span>Distance: </span>
+      <mat-slider min="1" max="50" tickInterval="1" (input)="radius = $event.value" [value]="radius"></mat-slider>
+      <span>{{radius}} km</span>
+    </div>
+  
+    <div class="sidenav-input checkbox-list-input">
+      <span>Categories:</span>
+      <mat-selection-list #categoryList [(ngModel)]="selectedCategories">
+        <mat-list-option *ngFor="let category of categories" value="{{category.identifier}}" checkboxPosition="before">{{category.name}}</mat-list-option>
+      </mat-selection-list>
+    </div>
+
+    <div class="sidenav-input">
+      <span>Price: </span>
+      <mat-button-toggle-group name="price" aria-label="Price range" multiple [(ngModel)]="selectedPrices">
+        <mat-button-toggle value="1">$</mat-button-toggle>
+        <mat-button-toggle value="2">$$</mat-button-toggle>
+        <mat-button-toggle value="3">$$$</mat-button-toggle>
+        <mat-button-toggle value="4">$$$$</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <span class="spacer"></span>
+
+    <mat-divider></mat-divider>
+
+    <div class="sidenav-input">
+      <button mat-raised-button class="apply-button" (click)="apply()">Apply</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<mat-sidenav-container>
+  <mat-sidenav  #restaurantPickerSidebar opened="true" mode="side">
+    <restaurant-picker-sidebar (applied)="applyParameters($event)"></restaurant-picker-sidebar>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="restaurant-cards" *ngIf="restaurants.length > 0">
+      <div class="cards-area">
+        <restaurant-card [@reject] [restaurant]="restaurant" *ngFor="let restaurant of restaurants.reverse().slice(0, 2)"></restaurant-card>
+      </div>
+    
+      <div class="controls-area">
+        <button mat-fab color="primary" aria-label="Next restaurant button" (click)="nextRestaurant()">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="no-restaurants" *ngIf="restaurants.length === 0">
+      <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container> 
