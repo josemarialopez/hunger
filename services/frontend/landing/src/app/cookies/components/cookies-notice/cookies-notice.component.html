@@ -1,0 +1,17 @@
+<div class="cookies-notice mat-elevation-z6" *ngIf="!areAccepted()" [@acceptAnimation]>
+  <div class="content-row">
+    <div class="flex-row">
+      <div class="text-area">
+        <span>
+          Hunger uses cookies to enable the Hunger service and to improve your experience with us. 
+          To learn more, check out our <a routerLink="/cookies">cookie policy</a>. By clicking "Accept", you agree that we can place
+          these cookies.
+        </span>
+      </div>
+      
+      <div class="button-area">
+        <button mat-raised-button color="primary" (click)="acceptCookies()">Accept</button>
+      </div>
+    </div>
+  </div>
+</div>

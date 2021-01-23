@@ -1,1 +1,49 @@
-/* You can add global styles to this file, and also import other style files */
+
+$action-color: #FB5068;
+
+html, body { height: 100%; }
+body { 
+  margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+  background-color: #FAFAFA;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.page {
+
+  .page-row {
+    max-width: 1220px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+}
+
+.content-row {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 40px;
+  overflow-x: hidden;
+}
+
+
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+
+a {
+  text-decoration: none;
+  color: $action-color
+}

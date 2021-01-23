@@ -1,0 +1,13 @@
+<mat-toolbar class="mat-elevation-z6">
+
+  <a href="/" class="logo">
+    <img src="../assets/images/hunger-logo.svg" alt="Hunger logo" width="85" height="55">
+    <span>hunger</span>
+  </a>
+
+  <span class="spacer"></span>
+
+  <button mat-stroked-button [routerLink]="'login'" *ngIf="!isLogged()">Log in</button>
+  <button mat-raised-button color="primary" [routerLink]="'signup'" *ngIf="!isLogged()">Sign up</button>
+  <button mat-raised-button color="primary" (click)="logout()" *ngIf="isLogged()">Log out</button>
+</mat-toolbar> 

@@ -1,0 +1,22 @@
+.cookies-notice {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: auto;
+  background-color: white;
+
+  .flex-row {
+    align-items: center;
+  }
+
+  .button-area {
+    margin-left: 20px;
+
+    button {
+      background-color: #f72c48;
+      color: white;
+    }
+  }
+
+}

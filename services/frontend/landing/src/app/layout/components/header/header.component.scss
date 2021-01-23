@@ -1,0 +1,25 @@
+mat-toolbar {
+  min-height: 64px;
+  background-color: white;
+  position: fixed;
+  z-index: 2;
+  
+  a.logo {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #f72c48;
+    text-decoration: none;
+    font-size: 1.3em;
+  }
+
+  button {
+    margin-left: 10px;
+
+    &.mat-primary {
+      background-color: #f72c48;
+      color: white;
+    }
+  }
+}
