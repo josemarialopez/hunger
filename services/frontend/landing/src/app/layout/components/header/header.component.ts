@@ -13,12 +13,14 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  isLogged(): boolean {
-    return this._users.isLogged();
+  login(): void {
+    window.location.href = 'http://app.hungerapp.com/login';
   }
 
-  logout(): void {
-    this._users.logoutUser();
+
+  signup(): void {
+    window.location.href = 'http://app.hungerapp.com/signup'
   }
+
 
 }

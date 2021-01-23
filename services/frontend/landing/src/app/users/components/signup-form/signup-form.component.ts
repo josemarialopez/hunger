@@ -2,8 +2,6 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { runInThisContext } from 'vm';
-import { SignupResponse } from '../../interfaces/signupResponse';
 import { UsersService } from '../../users.service';
 
 @Component({
