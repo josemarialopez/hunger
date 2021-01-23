@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :restaurants, only: [:index] do
         collection do
           get :categories
+          get :main_categories
         end
       end
     end

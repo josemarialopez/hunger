@@ -14,6 +14,10 @@ module Api
         render json: Category.all.sample(5), status: :ok
       end
 
+      def main_categories
+        render json: Category.main, status: :ok
+      end
+
       private
 
       def restaurants_params
