@@ -1,0 +1,16 @@
+:host {
+  width: 100%;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+  
+    button {
+      background-color: #f72c48;
+      color: white;
+    }
+  
+  }
+}
+

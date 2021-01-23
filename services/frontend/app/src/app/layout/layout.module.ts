@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ContentComponent } from './components/content/content.component';
+import { UsersModule } from '../users/users.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ContentComponent } from './components/content/content.component';
     LayoutRoutingModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    UsersModule
   ],
   exports: [NavbarComponent, ContentComponent]
 })

@@ -1,0 +1,39 @@
+
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline">
+    <mat-label>First Name</mat-label>
+    <input matInput type="text"  formControlName="firstName">
+    <mat-error *ngIf="!signupForm.controls['firstName'].valid && signupForm.controls['firstName'].touched">
+      {{getFirstNameErrorMessage()}}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Last Name</mat-label>
+    <input matInput type="text"  formControlName="lastName">
+    <mat-error *ngIf="!signupForm.controls['lastName'].valid && signupForm.controls['lastName'].touched">
+      {{getLastNameErrorMessage()}}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput type="email"  formControlName="email">
+    <mat-error *ngIf="!signupForm.controls['email'].valid && signupForm.controls['email'].touched">
+      {{getEmailErrorMessage()}}
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input matInput type="password"formControlName="password">
+    <mat-error *ngIf="!signupForm.controls['password'].valid && signupForm.controls['password'].touched">
+      {{getPasswordErrorMessage()}}
+    </mat-error>
+
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" >Sign up</button>
+</form>
+
+

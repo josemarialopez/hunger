@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { LayoutModule } from './layout/layout.module';
 import { RestaurantsModule } from './restaurants/restaurants.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UsersModule } from './users/users.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     LayoutModule,
     RestaurantsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    UsersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
