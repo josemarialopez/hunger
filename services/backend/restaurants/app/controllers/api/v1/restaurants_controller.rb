@@ -11,7 +11,7 @@ module Api
       end
 
       def categories
-        render json: Category.all.sample(5), status: :ok
+        render json: Category.all, status: :ok
       end
 
       def main_categories
