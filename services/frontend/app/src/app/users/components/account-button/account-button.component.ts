@@ -15,7 +15,7 @@ export class AccountButtonComponent implements OnInit {
 
   logout(): void {
     this._users.logoutUser();
-    window.location.href = 'http://www.hungerapp.com';
+    window.location.href = 'http://www.hungerapp.net';
   }
 
 }

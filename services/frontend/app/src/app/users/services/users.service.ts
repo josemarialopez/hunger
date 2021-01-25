@@ -12,7 +12,7 @@ import { SignupResponse } from '../interfaces/signupResponse';
 })
 export class UsersService {
   
-  USERS_API_PATH = 'http://api.hungerapp.com/v1/users';
+  USERS_API_PATH = 'http://api.hungerapp.net/v1/users';
 
 
   constructor(private _http: HttpClient) { }

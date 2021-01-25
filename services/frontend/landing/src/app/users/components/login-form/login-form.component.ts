@@ -30,7 +30,7 @@ export class LoginFormComponent {
         password: this.loginForm.value.password
       }
     }).subscribe((response: LoginResponse) => {
-      window.location.href = 'http://app.hungerapp.com'
+      window.location.href = 'http://app.hungerapp.net'
     }, (error: HttpErrorResponse) => {
       this.handleLoginError(error)
     })

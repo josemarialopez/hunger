@@ -15,13 +15,16 @@ export class RestaurantsService {
 
 
   getRestaurants(params: GetRestaurantsParameters): Observable<Restaurant[]> {
-    return this._http.get<Restaurant[]>('http://api.hungerapp.com/v1/restaurants', { params: this.generateHttpOptions(params) } );
+    return this._http.get<Restaurant[]>('http://api.hungerapp.net/v1/restaurants', { params: this.generateHttpOptions(params) } );
   }
 
 
-
   getCategories(): Observable<Category[]> {
-    return this._http.get<Category[]>('http://api.hungerapp.com/v1/restaurants/categories');
+    return this._http.get<Category[]>('http://api.hungerapp.net/v1/restaurants/categories');
+  }
+
+  getMainCategories(): Observable<Category[]> {
+    return this._http.get<Category[]>('http://api.hunberapp.net/v1/restaurants/main_categories');
   }
 
   private generateHttpOptions(params: GetRestaurantsParameters): HttpParams {

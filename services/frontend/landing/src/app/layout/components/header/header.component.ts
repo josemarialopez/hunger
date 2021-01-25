@@ -14,12 +14,12 @@ export class HeaderComponent implements OnInit {
   }
 
   login(): void {
-    window.location.href = 'http://app.hungerapp.com/login';
+    window.location.href = 'http://app.hungerapp.net/login';
   }
 
 
   signup(): void {
-    window.location.href = 'http://app.hungerapp.com/signup'
+    window.location.href = 'http://app.hungerapp.net/signup'
   }
 
 
