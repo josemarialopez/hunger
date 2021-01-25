@@ -12,6 +12,7 @@ import {
 } from '@angular/animations';
 import { Category } from '../../interfaces/category';
 import { GetRestaurantsParameters } from '../../interfaces/get-restaurants-parameters';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'restaurant-picker',
@@ -34,6 +35,7 @@ import { GetRestaurantsParameters } from '../../interfaces/get-restaurants-param
 export class RestaurantPickerComponent {
   
   categories: Category[] = [];
+  mainCategories: Category[] = [];
   restaurants: Restaurant[] = []
 
   constructor(private _restaurants: RestaurantsService) {
@@ -42,9 +44,11 @@ export class RestaurantPickerComponent {
     //       this.restaurants = restaurants;
     //     });
     this._restaurants.getCategories()
-        .subscribe((categories: Category[]) => {
-          this.categories = categories;
-        });
+      .subscribe((categories: Category[]) => {
+        this.categories = categories;
+        this.mainCategories =
+          categories.filter((category: Category) => category.main );
+      });
   }
 
   nextRestaurant(): void {

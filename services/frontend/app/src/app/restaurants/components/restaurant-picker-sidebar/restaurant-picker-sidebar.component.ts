@@ -16,6 +16,7 @@ export class RestaurantPickerSidebarComponent implements OnInit {
   location: string = '';
   radius: number | null = 5;
   categories: Category[] = [];
+  mainCategories: Category[] = [];
   selectedCategories: Category[] = [];
   selectedPrices: number[] = []
   gelocalatable: boolean = true;
@@ -26,7 +27,9 @@ export class RestaurantPickerSidebarComponent implements OnInit {
     this._restaurants.getCategories()
       .subscribe((categories: Category[]) => {
         this.categories = categories;
-      })
+        this.mainCategories =
+          categories.filter((category: Category) => category.main );
+      });
     
     this.geolocate();
     
@@ -36,19 +39,21 @@ export class RestaurantPickerSidebarComponent implements OnInit {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         if (position) {
+          console.log(position);
           let longitude = position.coords.longitude;
           let latitude = position.coords.latitude;
-          // this._geolocation
-          //     .geolocateByCoordinates(latitude, longitude)
-          //     .subscribe((response: any) => {
-          //       this.location = response['results'][0]['formatted_address'];
-          //     });
-          this.location = 'Málaga';
+          this._geolocation
+              .geolocateByCoordinates(latitude, longitude)
+              .subscribe((response: any) => {
+                this.location = response['results'][0]['formatted_address'];
+              });
+          // this.location = 'Málaga';
           this.apply();
         }
       });
     } else {
-      
+      console.log('No hay geolocation');
+      this.location = 'Málaga';
     }
   }
 
