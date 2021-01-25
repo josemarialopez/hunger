@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { UsersModule } from './users/users.module';
 import { CookiesModule } from './cookies/cookies.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductModule } from './product/product.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     UsersModule,
     CookiesModule,
     HttpClientModule,
+    ProductModule,
     SharedModule // Always the last module
   ],
   providers: [],
