@@ -8,6 +8,13 @@ mat-sidenav-container {
 
   mat-sidenav-content {
 
+    button {
+      background-color: #FB5068;
+      color: white;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+
     .restaurant-cards {
       width: 100%;
       height: 100%;
