@@ -21,7 +21,7 @@ module Api
       private
 
       def restaurants_params
-        params.permit(:term, :location, :radius)
+        params.permit(:term, :location, :radius, :categories)
       end
     end
   end

@@ -30,6 +30,7 @@ export class RestaurantsService {
   private generateHttpOptions(params: GetRestaurantsParameters): HttpParams {
     return new HttpParams().set('term', params.term ? params.term : '')
                            .set('location', params.location ? params.location : '')
-                           .set('radius', params.radius ? params.radius.toString() : '');
+                           .set('radius', params.radius ? params.radius.toString() : '')
+                           .set('categories', (params.categories!.length) > 0 ? params.categories!.join(',') : '');
   }
 }
