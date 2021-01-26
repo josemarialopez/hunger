@@ -1,6 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav  #restaurantPickerSidebar opened="true" mode="over">
-    <restaurant-picker-sidebar (applied)="applyParameters($event)"></restaurant-picker-sidebar>
+    <restaurant-picker-sidebar (applied)="applyParameters($event); restaurantPickerSidebar.toggle()"></restaurant-picker-sidebar>
   </mat-sidenav>
 
   <mat-sidenav-content>
