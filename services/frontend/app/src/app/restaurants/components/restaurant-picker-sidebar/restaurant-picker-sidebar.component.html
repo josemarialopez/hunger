@@ -44,6 +44,9 @@
   
 
     <div class="sidenav-button mat-elevation-z4">
-      <button mat-raised-button class="apply-button" (click)="apply()">Apply</button>
+      <button mat-raised-button 
+              class="apply-button" 
+              (click)="apply()" 
+              [disabled]="(location === '') || (radius === null)">Apply</button>
     </div>
 </div>

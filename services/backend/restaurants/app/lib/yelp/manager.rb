@@ -5,6 +5,7 @@ require 'singleton'
 module Yelp
   # Custom errors
   class RestaurantNotFoundError < StandardError; end
+
   class UnprocessableRestaurantSearchError < StandardError; end
 
   # Manager to communicate with the Yelp API
@@ -37,6 +38,7 @@ module Yelp
     end
 
     def search_restaurants(params = {})
+      byebug
       response = @connection.get('businesses/search', query_params(params))
       raise Yelp::UnprocessableRestaurantSearchError unless response.success?
 
@@ -56,32 +58,32 @@ module Yelp
     end
 
     def force_sort_by_param(params)
-      params["sort_by"] ||= DEFAULT_SORT_BY
+      params['sort_by'] ||= DEFAULT_SORT_BY
       params
     end
 
     def force_offset_param(params)
-      params["offset"] ||= DEFAULT_OFFSET
+      params['offset'] ||= DEFAULT_OFFSET
       params
     end
 
     def force_limit_param(params)
-      params["limit"] ||= DEFAULT_LIMIT
+      params['limit'] ||= DEFAULT_LIMIT
       params
     end
 
     def force_restaurant_category(params)
-      params["categories"] = Array(params["categories"]).push('restaurants')
+      params['categories'] = Array(params['categories']).push('restaurants')
       params
     end
 
     def format_categories_param(params)
-      params["categories"] = Array(params["categories"]).uniq.join(',')
+      params['categories'] = Array(params['categories']).select(&:present?).uniq.join(',')
       params
     end
 
     def format_price_param(params)
-      params["price"] = Array(params["price"]).uniq.join(',')
+      params['price'] = Array(params['price']).uniq.join(',')
       params
     end
 
