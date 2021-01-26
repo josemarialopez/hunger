@@ -12,6 +12,8 @@ import { UsersService } from '../../services/users.service';
 })
 export class SignupFormComponent implements OnInit {
 
+  error: String = '';
+
   constructor(
     private _builder: FormBuilder,
     private _users: UsersService,
@@ -88,7 +90,9 @@ export class SignupFormComponent implements OnInit {
 
 
   private handleSignupError(error: HttpErrorResponse) {
-    console.log(error.error);
+    if (error.status === 422) {
+      this.error = 'The email you have introduced, has already been taken';
+    }
 
   }
 

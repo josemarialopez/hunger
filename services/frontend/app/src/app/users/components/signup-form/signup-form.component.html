@@ -33,6 +33,8 @@
 
   </mat-form-field>
 
+  <mat-error *ngIf="error.length > 0">{{error}}</mat-error>
+
   <div class="buttons-area">
     <button mat-raised-button class="cancel-button" (click)="cancelSignup()" >Cancel</button>
     <button mat-raised-button class="signup-button" type="submit" [disabled]="!signupForm.valid" >Sign up</button>

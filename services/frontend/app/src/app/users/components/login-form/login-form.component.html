@@ -14,8 +14,9 @@
     <mat-error *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">
       {{getPasswordErrorMessage()}}
     </mat-error>
-
   </mat-form-field>
+
+  <mat-error *ngIf="error.length > 0">{{error}}</mat-error>
 
   <div class="buttons-area">
     <button mat-raised-button class="cancel-button" (click)="cancelLogin()" >Cancel</button>

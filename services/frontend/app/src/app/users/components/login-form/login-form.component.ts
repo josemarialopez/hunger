@@ -12,6 +12,8 @@ import { UsersService } from '../../services/users.service';
 })
 export class LoginFormComponent {
 
+  error: String = '';
+
   constructor(
     private _builder: FormBuilder,
     private _users: UsersService,
@@ -59,9 +61,10 @@ export class LoginFormComponent {
     window.location.href = "http://www.hungerapp.net";
   }
 
-
-  private handleLoginError(erro: HttpErrorResponse) {
-
+  private handleLoginError(error: HttpErrorResponse) {
+    if (error.status === 401) {
+      this.error = 'The user credentials you have introduced are not valid';
+    }
   }
 
 }
