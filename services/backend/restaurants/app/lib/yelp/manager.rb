@@ -16,7 +16,7 @@ module Yelp
     API_HOST = 'https://api.yelp.com'
     API_VERSION = 'v3'
     API_URL = "#{API_HOST}/#{API_VERSION}"
-    DEFAULT_LIMIT = 50 # Maximum number of elements
+    DEFAULT_LIMIT = 10 # Maximum number of elements
     DEFAULT_OFFSET = 0
     DEFAULT_SORT_BY = 'best_match'
     SORT_FIELDS = %w[best_match rating review_count distance].freeze
