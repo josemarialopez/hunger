@@ -3,83 +3,62 @@
   flex-direction: column;
   align-items: flex-start;
   height: 100%;
-  
 
-.sidenav-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 20px;
-
-  width: 100%;
-
-  h1 {
-    font-weight: 400;
-    margin: 0;
-    padding: 28px 8px;
-    font-size: 20px;
+  .sidenav-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 30px);
+    padding: 15px;
+    height: 30px;
+    background-color: #FB5068;
+    color: white;
   }
-}
 
-.sidenav-content {
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  .sidenav-inputs {
+    margin-top: 60px;
+    width: calc(100% - 30px);
+    padding: 15px;
+    height: calc(100% - 156px);
+    overflow-y: scroll;
 
-
-  .sidenav-input {
-
-    &.first-sidenav-input {
-      margin-top: 30px;
-    }
-
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-size: large;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    &.checkbox-list-input {
+    .sidenav-input {
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-
-      mat-selection-list {
+      justify-content: space-between;
+      align-items: center;
+      
+      .mat-form-field {
         width: 100%;
       }
-    }
 
-    .mat-button-toggle {
-      width: 60px;
+      &.checkbox-list-input {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
 
-      &.mat-button-toggle-checked {
-        background: #FB5068;
-        color: white;
+        .mat-selection-list {
+          width: 100%;
+          
+          .mat-list-option {
+            font-size: small;
+          }
+        }
+
       }
     }
 
-    .mat-form-field {
-      margin-bottom: 20px;
-      height: 50px;
-      width: 100%;
-      font-size: large;
-    }
+  }
 
-    .apply-button {
-      font-size: large;
-      height: 50px;
+  .sidenav-button {
+    padding: 15px;
+    width: calc(100% - 30px);
+    height: 40px;
+    background-color: white;
+
+    button {
       width: 100%;
-      margin-top: 40px;
-      margin-bottom: 40px;
       background-color: #FB5068;
       color: white;
-    } 
+    }
   }
-}
 }
