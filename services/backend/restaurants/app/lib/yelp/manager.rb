@@ -38,7 +38,6 @@ module Yelp
     end
 
     def search_restaurants(params = {})
-      byebug
       response = @connection.get('businesses/search', query_params(params))
       raise Yelp::UnprocessableRestaurantSearchError unless response.success?
 
@@ -73,7 +72,8 @@ module Yelp
     end
 
     def force_restaurant_category(params)
-      params['categories'] = Array(params['categories']).push('restaurants')
+      params['categories'] = ['restaurants'] if
+        Array(params['categories']).select(&:present?).uniq.empty?
       params
     end
 
