@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginResponse } from '../../interfaces/loginResponse';
 import { UsersService } from '../../services/users.service';
 
@@ -13,7 +14,8 @@ export class LoginFormComponent {
 
   constructor(
     private _builder: FormBuilder,
-    private _users: UsersService
+    private _users: UsersService,
+    private _router: Router
   ) { }
 
   loginForm = this._builder.group({
@@ -51,6 +53,10 @@ export class LoginFormComponent {
     let control = this.loginForm.controls['password'];
 
     return control.hasError('required') ? 'This field is required' : '';
+  }
+
+  cancelLogin() {
+    window.location.href = "http://www.hungerapp.net";
   }
 
 
