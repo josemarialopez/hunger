@@ -47,14 +47,10 @@ export class RestaurantPickerSidebarComponent implements OnInit {
               .subscribe((response: any) => {
                 this.location = response['results'][0]['formatted_address'];
               });
-          // this.location = 'Málaga';
           this.apply();
         }
       });
-    } else {
-      console.log('No hay geolocation');
-      this.location = 'Málaga';
-    }
+    } 
   }
 
 
@@ -67,10 +63,4 @@ export class RestaurantPickerSidebarComponent implements OnInit {
       prices: this.selectedPrices
     });
   }
-
-
-  
-
-    
-
 }
