@@ -5,10 +5,26 @@
     display: flex;
     flex-direction: column;
     padding: 15px;
+
+    .buttons-area {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+
+      button.signup-button {
+        background-color: #f72c48;
+        color: white;
+        width: 45%;
+      }
   
-    button {
-      background-color: #f72c48;
-      color: white;
+      button.cancel-button {
+        background-color: white;
+        color: auto;
+        width: 45%;
+      }
+    
     }
   
   }

@@ -82,6 +82,10 @@ export class SignupFormComponent implements OnInit {
     })
   }
 
+  cancelSignup() {
+    window.location.href = "http://www.hungerapp.net";
+  }
+
 
   private handleSignupError(error: HttpErrorResponse) {
     console.log(error.error);
