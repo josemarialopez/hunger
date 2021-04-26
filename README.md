@@ -18,4 +18,5 @@ Hunger app
 
 ## Execute
 Execute `docker-compose up`
+
 Now you should be able to access the website at 'http://www.hungerapp.net'
